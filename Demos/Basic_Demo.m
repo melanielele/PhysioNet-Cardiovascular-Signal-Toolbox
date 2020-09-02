@@ -66,9 +66,17 @@ hold on;
 %this plot is using to line up the detected peaks
 plot(r_peaks./Fs, ecg(r_peaks),'o');
 legend('ecg signal', 'detected R peaks')
+hold off;
 
+%referencing to this website: https://www.mathworks.com/help/signal/ug/find-periodicity-using-frequency-analysis.html
 
-
-
+% try to find the periodicity using periodogram
+%compute and plot the periodogram
+[pxx,f]=periodogram(ecg(r_peaks),[],[],Fs);
+plot(f,pxx)
+%limit the X range
+xlim([1 3]);
+xlabel('Frequency');
+ylabel('Magnitude');
 
 
