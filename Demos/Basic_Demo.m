@@ -57,14 +57,15 @@ HRVparams = InitializeHRVparams('Demo');
 % set the exact sampling frequency usign the one from the loaded signal
 HRVparams.Fs = Fs;
 % call the function that perform peak detection
+% r_peaks is the detected peaks 
 r_peaks = jqrs(ecg,HRVparams);
 
 % plot the detected r_peaks on the top of the ecg signal
 figure(1)
 hold on;
+%this plot is using to line up the detected peaks
 plot(r_peaks./Fs, ecg(r_peaks),'o');
 legend('ecg signal', 'detected R peaks')
-
 
 
 
